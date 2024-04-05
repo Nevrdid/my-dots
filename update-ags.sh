@@ -5,8 +5,7 @@
 # The install.sh will install ags for you, why you still need this?
 # Because you may run this script to ONLY update ags, since ags is a very active project currently and updates frequently.
 #
-cd "$(dirname "$0")"
-export base="$(pwd)"
+cd "$(dirname "$0")" || exit
 source ./scriptdata/functions
 source ./scriptdata/installers
 

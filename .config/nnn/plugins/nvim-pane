@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+selection=${NNN_SEL:-${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection}
+
+printf "(s)election/(c)urrent? [default=c] "
+read -r resp
+
+if [ "$resp" = s ]; then
+	cmd="xargs -0 nvim -p < $selection"
+else
+	cmd="nvim \"$1\""
+fi
+
+if [[ -n "$TMUX" ]]; then
+	tmux split-window -h "$cmd"
+else
+	foot -He "$cmd"
+fi
+
+if [ "$resp" = "s" ] && [ -p "$NNN_PIPE" ]; then
+	printf - >"$NNN_PIPE"
+fi

@@ -1,0 +1,21 @@
+session_name: naev
+start_directory: ~/Github/naev
+root_directory: ~/Github/naev
+windows:
+- window_name: build
+  focus: True
+  start_directory: builddir/
+  panes:
+    - shell_command:
+      - meson compile
+- window_name: src
+  start_directory: src/
+  panes:
+    - shell_command:
+      - nvim -S
+- window_name: dat
+  start_directory: dat/
+  panes:
+    - shell_command:
+      - nvim -S
+
